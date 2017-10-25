@@ -9,12 +9,10 @@ namespace DAL
 {
    public class Dal_imp : IDal
     {
-        private readonly List<Flower> FloweraList;
+        private  List<Flower> FloweraList;
 
         public Dal_imp()
         {
-
-            FloweraList=new List<Flower>();
             FloweraList = new List<Flower>();
             for (int i = 0; i < 15; i++)
             {
