@@ -24,7 +24,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <!--<TextBlock  Text="TextBlock" Padding="10" FontSize="10" Margin="10,20" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" TextAlignment="Center"/>-->
-            <TextBox  Text="TextBox" Padding="10" FontSize="12" Margin="10,5"  Grid.Column="0"  FontWeight="Bold" Style="{StaticResource AutoSuggestBoxTextBoxStyle}" MinWidth="0"  />
+            <TextBox  Text="" PlaceholderText="enter a flower name" Padding="10" FontSize="15" Margin="10,5"  Grid.Column="0"  FontWeight="Bold" Style="{StaticResource AutoSuggestBoxTextBoxStyle}" MinWidth="0"  />
             <Button Content="Button" Grid.Column="1"  Margin="10,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"    />
         </Grid>
         <GridView x:Name="gridview"   Grid.Row="1" Background="#FFA49E9E" />
