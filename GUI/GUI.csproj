@@ -108,6 +108,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Common Almond.jpg" />
+    <Content Include="Assets\flowers dictionary.jpg" />
+    <Content Include="Assets\flowers dictionary.scale-100.jpg" />
+    <Content Include="Assets\flowers dictionary.scale-125.jpg" />
+    <Content Include="Assets\flowers dictionary.scale-150.jpg" />
+    <Content Include="Assets\flowers dictionary.scale-200.jpg" />
     <Content Include="Assets\Grandiflora Rose.jpg" />
     <Content Include="Assets\Hybrid Tea Rose.jpg" />
     <Content Include="Assets\King Uzziae Iris.jpg" />

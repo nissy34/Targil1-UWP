@@ -26,16 +26,17 @@ namespace GUI
     public sealed partial class MainPage : Page
     {
         
+        IBl bl;
         public MainPage()
         {
             this.InitializeComponent();
-
-            GridView.ItemsSource =new ObservableCollection<Flower>(new BL_imp().GetAllFLowersByName(null));
+            bl = Factory_Bl.GetInstance_List();
+            GridView.ItemsSource =new ObservableCollection<Flower>(bl.GetAllFLowersByName(null));
         }
 
         private void TextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            GridView.ItemsSource = new ObservableCollection<Flower>(new BL_imp().GetAllFLowersByName((sender as TextBox).Text));
+            GridView.ItemsSource = new ObservableCollection<Flower>(bl.GetAllFLowersByName((sender as TextBox).Text));
         }
 
    

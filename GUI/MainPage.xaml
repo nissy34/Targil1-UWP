@@ -47,17 +47,24 @@
                   Margin="{StaticResource LargeItemMargin}"  Tapped="UIElement_OnTapped">
                 <FlyoutBase.AttachedFlyout>
                     <Flyout>
-                            <StackPanel Orientation="Vertical" Width="100">
-                                <TextBlock Text="{x:Bind Color}"
-                                   MaxWidth="100"
+                            <StackPanel Orientation="Vertical" >
+                                
+                                    <TextBlock Text="Color:" FontWeight="Bold" />
+                                    <TextBlock Text="{x:Bind Color}"
+                                      MaxWidth="190"
+                                       HorizontalAlignment="Center"
+                                       Margin="0,0,0,8" 
+                                      Style="{StaticResource CaptionTextBlockStyle}" />
+                                
+                                <TextBlock Text="Growing area:" FontWeight="Bold" />
+                                <TextBlock Text="{x:Bind GrowingArea}"
+                                   MaxWidth="190"
                                    HorizontalAlignment="Center"
+                                           Margin="0,0,0,8"
                                    Style="{StaticResource CaptionTextBlockStyle}" />
-                        <TextBlock Text="{x:Bind GrowingArea}"
-                                   MaxWidth="100"
-                                   HorizontalAlignment="Center"
-                                   Style="{StaticResource CaptionTextBlockStyle}" />
-                        <TextBlock Text="{x:Bind Description}"
-                                   MaxWidth="100"
+                                <TextBlock Text="Description:" FontWeight="Bold" />
+                                <TextBlock  Text="{x:Bind Description}"
+                                   MaxWidth="190"
                                    HorizontalAlignment="Center"
                                    Style="{StaticResource CaptionTextBlockStyle}"
                                    Margin="8,0,0,0" />
@@ -76,7 +83,7 @@
                 
                 <StackPanel Orientation="Vertical"
                             Grid.Row="1">
-                    <TextBlock Text="{x:Bind Name}"
+                        <TextBlock Text="{x:Bind Name}" 
                                HorizontalAlignment="Center"
                                Style="{StaticResource SubtitleTextBlockStyle}" />
                     <StackPanel Orientation="Horizontal"
