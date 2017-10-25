@@ -6,28 +6,123 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local1="using:BE"
-    mc:Ignorable="d" Height="720" Width="1280" MinWidth="1280" >
+    mc:Ignorable="d"  >
     <Page.Resources>
-  
+
+        <!-- Margins for grid items -->
+        <x:Int32 x:Key="LargeItemMarginValue">8</x:Int32>
+        <Thickness x:Key="LargeItemMargin">8</Thickness>
+        <x:Int32 x:Key="SmallItemMarginValue">0</x:Int32>
+        <Thickness x:Key="SmallItemMargin">0</Thickness>
+        <x:Int32 x:Key="DesktopWindowSidePaddingValue">16</x:Int32>
+        <x:Int32 x:Key="MobileWindowSidePaddingValue">32</x:Int32>
+
+        <Flyout x:Key="zoomFlyout" >
+            <StackPanel>
+                <Slider x:Name="ZoomSlider"
+                        Width="100"
+                        Minimum="180"
+                        Maximum="540"
+                        Value="270"
+                        Margin="0,5,0,0"
+                        TickFrequency="90"
+                        SnapsTo="Ticks"
+                        Header="Grid item size" />
+                <ToggleSwitch x:Name="FitScreenToggle"
+                              Header="Fit to screen"
+                              MinWidth="100"
+                              ToolTipService.ToolTip="Resize images to use available space." />
+            </StackPanel>
+        </Flyout>
+
+        <ItemsPanelTemplate x:Key="ImageGridView_ItemsPanelTemplate">
+            <ItemsWrapGrid Orientation="Horizontal"
+                           HorizontalAlignment="Center" />
+        </ItemsPanelTemplate>
+
+        <DataTemplate x:Key="ImageGridView_DefaultItemTemplate" x:DataType="local1:Flower">
+            <Border BorderBrush="Indigo" CornerRadius="15" BorderThickness="3" >
+            <Grid Height="200"
+                  Width="200"
+                  Margin="{StaticResource LargeItemMargin}"  Tapped="UIElement_OnTapped">
+                <FlyoutBase.AttachedFlyout>
+                    <Flyout>
+                            <StackPanel Orientation="Vertical" Width="100">
+                                <TextBlock Text="{x:Bind Color}"
+                                   MaxWidth="100"
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource CaptionTextBlockStyle}" />
+                        <TextBlock Text="{x:Bind GrowingArea}"
+                                   MaxWidth="100"
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource CaptionTextBlockStyle}" />
+                        <TextBlock Text="{x:Bind Description}"
+                                   MaxWidth="100"
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource CaptionTextBlockStyle}"
+                                   Margin="8,0,0,0" />
+                            </StackPanel>
+                    </Flyout>
+                </FlyoutBase.AttachedFlyout>
+                    <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                    <Image x:Name="ItemImage" 
+                           Source="{x:Bind ImagePath}" 
+                           Stretch="Uniform" >
+                    </Image> 
+                
+                <StackPanel Orientation="Vertical"
+                            Grid.Row="1">
+                    <TextBlock Text="{x:Bind Name}"
+                               HorizontalAlignment="Center"
+                               Style="{StaticResource SubtitleTextBlockStyle}" />
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                        <!--<TextBlock Text="{x:Bind Color}"
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource CaptionTextBlockStyle}" />
+                        <TextBlock Text="{x:Bind GrowingArea}"
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource CaptionTextBlockStyle}" />
+                        <TextBlock Text="{x:Bind Description}"
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource CaptionTextBlockStyle}"
+                                   Margin="8,0,0,0" />-->
+                    </StackPanel>
+
+                </StackPanel>
+            </Grid>
+            </Border>
+            
+        </DataTemplate>
+
+        <Style x:Key="ImageGridView_DefaultItemContainerStyle"
+               TargetType="GridViewItem">
+            <Setter Property="Background"
+                    Value="Gray" />
+            <Setter Property="Margin"
+                    Value="{StaticResource LargeItemMargin}" />
+        </Style>
 
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  >
+    <Grid  Opacity="0.75">
+        <Grid.Background>
+            <SolidColorBrush Color="#FFAD92E4" Opacity="0.75"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="83*" />
+            <RowDefinition Height="397*"/>
         </Grid.RowDefinitions>
 
-        <Grid  >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <!--<TextBlock  Text="TextBlock" Padding="10" FontSize="10" Margin="10,20" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" TextAlignment="Center"/>-->
-            <TextBox  Text="" PlaceholderText="enter a flower name" Padding="10" FontSize="15" Margin="10,5"  Grid.Column="0"  FontWeight="Bold" Style="{StaticResource AutoSuggestBoxTextBoxStyle}" MinWidth="0"  />
-            <Button Content="Button" Grid.Column="1"  Margin="10,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"    />
-        </Grid>
-       
+        <!--<TextBlock  Text="TextBlock" Padding="10" FontSize="10" Margin="10,20" Style="{StaticResource BaseTextBlockStyle}" TextWrapping="Wrap" TextAlignment="Center"/>-->
+        <TextBox  Text="" PlaceholderText="Enter a flower name" Padding="10"  TextChanged="TextBox_OnTextChanged"  FontSize="25" Margin="450,20"  Grid.Column="0"  FontWeight="Bold" Style="{StaticResource AutoSuggestBoxTextBoxStyle}" MinWidth="0"  />
+        <!--<Button Content="Button" Grid.Column="1"  Margin="10,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"    />-->
+
+        <GridView  x:Name="GridView" Background="Lavender" Grid.Row="1" ItemTemplate="{StaticResource ImageGridView_DefaultItemTemplate}" ></GridView>
 
     </Grid>
 </Page>

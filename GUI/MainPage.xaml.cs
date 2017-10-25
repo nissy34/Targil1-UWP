@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -12,6 +13,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using BE;
+using BL;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -22,11 +25,24 @@ namespace GUI
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        
         public MainPage()
         {
             this.InitializeComponent();
-            
-            //ObservableCollection<ObjectA> myCollection = new ObservableCollection<ObjectA>(myList as List<ObjectA>);
+
+            GridView.ItemsSource =new ObservableCollection<Flower>(new BL_imp().GetAllFLowersByName(null));
+        }
+
+        private void TextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            GridView.ItemsSource = new ObservableCollection<Flower>(new BL_imp().GetAllFLowersByName((sender as TextBox).Text));
+        }
+
+   
+
+        private void UIElement_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
         }
     }
 }
