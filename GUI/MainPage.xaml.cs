@@ -25,7 +25,7 @@ namespace GUI
         public MainPage()
         {
             this.InitializeComponent();
-            gridview.ItemsSource = new List<int>() { 1, 2, 3, 4, 5, 6, 7 ,8,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,4,43,3,3,3,3,3,};
+            
             //ObservableCollection<ObjectA> myCollection = new ObservableCollection<ObjectA>(myList as List<ObjectA>);
         }
     }
