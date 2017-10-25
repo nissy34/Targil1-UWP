@@ -5,9 +5,11 @@
     xmlns:local="using:GUI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local1="using:BE"
     mc:Ignorable="d" Height="720" Width="1280" MinWidth="1280" >
     <Page.Resources>
-       
+  
+
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  >
@@ -25,7 +27,7 @@
             <TextBox  Text="TextBox" Padding="10" FontSize="12" Margin="10,5"  Grid.Column="0"  FontWeight="Bold" Style="{StaticResource AutoSuggestBoxTextBoxStyle}" MinWidth="0"  />
             <Button Content="Button" Grid.Column="1"  Margin="10,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"    />
         </Grid>
-        <GridView x:Name="gridview"  Grid.Row="1" Background="#FFA49E9E" />
+        <GridView x:Name="gridview"   Grid.Row="1" Background="#FFA49E9E" />
 
     </Grid>
 </Page>
