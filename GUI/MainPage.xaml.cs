@@ -31,12 +31,12 @@ namespace GUI
         {
             this.InitializeComponent();
             bl = Factory_Bl.GetInstance_List();
-            GridView.ItemsSource =new ObservableCollection<Flower>(bl.GetAllFLowersByName(null));
+            GridView.ItemsSource =bl.GetAllFLowersByName(null);
         }
 
         private void TextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            GridView.ItemsSource = new ObservableCollection<Flower>(bl.GetAllFLowersByName((sender as TextBox).Text));
+            GridView.ItemsSource =bl.GetAllFLowersByName((sender as TextBox).Text);
         }
 
    
